@@ -24,12 +24,12 @@ export default function Profiles() {
   return (
     <section id="profiles">
       <div className="in">
-        <span className="skills-kicker">FIND ME ONLINE</span>
+        <span className="skills-kicker">Find me online</span>
         <h2>Developer profiles</h2>
         <p className="sub">Explore my code and connect with me professionally.</p>
-        <div className="profile-grid" id="coding-profiles">
+        <div className="profile-grid stag">
           {profiles.map(({ name, label, detail, href, Icon, tag }) => (
-            <a className="card profile-card" data-tilt key={name} href={href} target="_blank" rel="noopener noreferrer">
+            <a className="card profile-card" key={name} href={href} target="_blank" rel="noopener noreferrer">
               <div className="profile-card-head">
                 <span className="profile-tag">{tag}</span>
                 <FaArrowUpRightFromSquare aria-hidden="true" />

@@ -1,6 +1,6 @@
 
 import { certifications } from '../data/portfolio';
-import { TECH } from '../lib/icons';
+import { getIcon } from '../lib/icons';
 
 export default function Training() {
   return (
@@ -14,17 +14,15 @@ export default function Training() {
           and continuous skill development.
         </p>
 
-        <div className="g2 training-grid" id="tr">
+        <div className="g2 stag" id="tr">
 
           {certifications.map((c, index) => {
-            const { Icon } = TECH[c.icon] ?? TECH.fallback;
+            const Icon = getIcon(c.icon);
 
             return (
               <article
                 className="card cert"
-                data-tilt
-                data-reveal="cert"
-                key={c.title}
+                                                key={c.title}
                 style={{
                   '--card-index': index,
                 }}

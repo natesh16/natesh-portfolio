@@ -1,9 +1,9 @@
-import { TECH } from '../lib/icons';
+import { getIcon } from '../lib/icons';
 
 export default function TechChip({ id, label }) {
-  const { Icon, color } = TECH[id] ?? TECH.fallback;
+  const Icon = getIcon(id);
   return (
-    <span className="chip tech" style={{ '--ic': color }}>
+    <span className="chip tech">
       <Icon aria-hidden="true" />
       {label}
     </span>

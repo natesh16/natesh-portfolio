@@ -7,7 +7,7 @@ export default function Skills() {
       <div className="in">
         <div className="skills-head">
           <div>
-            <span className="skills-kicker">MY TOOLKIT</span>
+            <span className="skills-kicker">Toolkit</span>
             <h2>Technical skills</h2>
             <p className="sub">
               A practical toolkit across full-stack development, cloud infrastructure,
@@ -19,18 +19,15 @@ export default function Skills() {
             <span>skill domains</span>
           </div>
         </div>
-        <div className="skills-grid" id="sk">
+        <div className="skills-grid stag">
           {skillGroups.map((group, index) => (
-            <article className="card skill-card" data-tilt key={group.title}>
+            <article className="card skill-card" key={group.title}>
               <div className="skill-card-top">
                 <div className="skill-index">{String(index + 1).padStart(2, '0')}</div>
                 <div className="skill-count">{String(group.items.length).padStart(2, '0')} TOOLS</div>
               </div>
               <h3>{group.title}</h3>
               <p className="skill-description">{group.description}</p>
-              <div className="skill-rule" aria-hidden="true">
-                <span style={{ width: `${Math.min(100, 35 + group.items.length * 5)}%` }} />
-              </div>
               <div className="skill-chips">
                 {group.items.map((item) => (
                   <TechChip key={item.id} id={item.id} label={item.label} />

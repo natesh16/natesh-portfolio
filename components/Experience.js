@@ -8,13 +8,12 @@ export default function Experience() {
       <div className="in">
         <h2>Experience</h2>
         <p className="sub">Freelance full-stack and DevOps work, from requirements to cloud deployment.</p>
-        <div className="tl" id="xp" style={{ paddingLeft: 34 }}>
-          <span className="ln" />
-          <div className="card" data-tilt>
+        <div className="xp">
+          <div className="card">
             <div className="jh">
               <div>
                 <h3>{role}</h3>
-                <span style={{ color: 'var(--mu)' }}>{company}</span>
+                <span className="sc">{company}</span>
               </div>
               <span className="chip">{period}</span>
             </div>

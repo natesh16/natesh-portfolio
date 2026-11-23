@@ -23,23 +23,13 @@ export const navLinks = [
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#education", label: "Education" },
-  { href: "#training", label: "Training" },
-  { href: "#profiles", label: "Profiles" },
   { href: "#contact", label: "Contact" },
 ];
 
 // Section ids in page order (used by the side navigation dots).
 export const sectionIds = [
-  "home",
-  "about",
-  "experience",
-  "projects",
-  "skills",
-  "education",
-  "training",
-  "profiles",
-  "resume",
-  "contact",
+  "home", "about", "experience", "projects", "skills",
+  "education", "training", "profiles", "writing", "contact",
 ];
 
 export const about = {
@@ -125,7 +115,7 @@ export const projects = [
     id: "transport",
     title: "Employee Transport Management System",
     period: "Final Year Project",
-    image: "/employeetransportmanagementsystem.png",
+    image: "/employee-transport.png",
     imageAlt:
       "Employee transport SaaS platform with fleet dashboard and live tracking",
     description:

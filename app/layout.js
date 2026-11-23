@@ -1,26 +1,18 @@
-import { Space_Grotesk, DM_Mono } from 'next/font/google';
+import { Inter, DM_Mono } from 'next/font/google';
 import './globals.css';
 import { profile } from '../data/portfolio';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Effects from '../components/Effects';
 
-const sans = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const mono = DM_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-mono',
-  display: 'swap',
-});
+const sans = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const mono = DM_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' });
 
 const description =
   'Natesh L is a Full Stack Developer and DevOps Engineer building and deploying MERN applications on AWS with Docker, Jenkins and GitHub Actions.';
 
 export const metadata = {
-  title: `${profile.name} | ${profile.title}`,
+  title: { default: `${profile.name} | ${profile.title}`, template: '%s' },
   description,
   openGraph: {
     title: `${profile.name} | ${profile.title}`,
@@ -29,12 +21,7 @@ export const metadata = {
   },
 };
 
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  viewportFit: 'cover',
-  themeColor: '#050a16',
-};
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#fafafa' };
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -47,18 +34,22 @@ const jsonLd = {
   alumniOf: 'Rohini College of Engineering & Technology',
 };
 
+// Runs before first paint so reveal animations never flash visible content.
+const animGate =
+  "if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window)document.documentElement.classList.add('anim')";
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <body>
-        <noscript>
-          <style>{'#ld{display:none!important}'}</style>
-        </noscript>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: animGate }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <a className="skip" href="#main">Skip to content</a>
+        <div id="bar" aria-hidden="true" />
+        <Navbar />
         {children}
+        <Footer />
+        <Effects />
       </body>
     </html>
   );

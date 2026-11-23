@@ -6,10 +6,9 @@ export default function Education() {
     <section id="education">
       <div className="in">
         <h2>Education</h2>
-        <div className="tl pad" id="ed">
-          <span className="ln" />
+        <div className="stag ed">
           {education.map((e) => (
-            <div className="card row" data-tilt key={e.title}>
+            <div className="card row" key={e.title}>
               <div>
                 <span className="chip">{e.period}</span>
                 <h3>{e.title}</h3>
@@ -17,9 +16,7 @@ export default function Education() {
               </div>
               {e.score ? (
                 <div>
-                  <div className="cgpa" data-n={e.score} data-suffix="%">
-                    {e.score}%
-                  </div>
+                  <div className="cgpa">{e.score}%</div>
                   <span className="mono sc">Score</span>
                 </div>
               ) : (

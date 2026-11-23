@@ -76,13 +76,13 @@ export default function Contact() {
               github.com/natesh16
             </a>
           </div>
-          <div className="soc" id="so" style={{ marginTop: 24 }}>
+          <div className="soc">
             {socials.map(({ label, href, Icon, external }) => (
               <a
                 key={label}
                 href={href}
                 aria-label={label}
-                data-mag
+               
                 {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
                 <Icon aria-hidden="true" />
@@ -135,7 +135,7 @@ export default function Contact() {
               required
             />
           )}
-          <button className="btn p" type="submit" style={{ justifyContent: 'center' }}>
+          <button className="btn p" type="submit" >
             <FaEnvelope aria-hidden="true" />
             Send message
           </button>
@@ -143,7 +143,7 @@ export default function Contact() {
             {feedback === 's' ? (
               <>
                 Your email app should open with the message ready to send. If it doesn&rsquo;t,
-                write to <a style={{ textDecoration: 'underline' }} href={`mailto:${profile.email}`}>{profile.email}</a>.
+                write to <a href={`mailto:${profile.email}`}>{profile.email}</a>.
               </>
             ) : null}
           </div>
