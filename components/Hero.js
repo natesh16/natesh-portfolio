@@ -21,6 +21,12 @@ export default function Hero() {
           </div>
         </div>
         <div className="art">
+          <div className="hero-orbit" aria-hidden="true">
+            <span className="orbit-ring" />
+            <span className="orbit-ring orbit-ring--2" />
+            <span className="orbit-dot" />
+            <span className="orbit-dot orbit-dot--2" />
+          </div>
           <Image
             className="pt"
             src="/profile.png"
@@ -30,8 +36,14 @@ export default function Hero() {
             priority
             alt={`${profile.name}, ${profile.title.toLowerCase()}`}
           />
+          <span className="hero-spark hero-spark--a" aria-hidden="true">+</span>
+          <span className="hero-spark hero-spark--b" aria-hidden="true">+</span>
+          <span className="hero-spark hero-spark--c" aria-hidden="true" />
         </div>
       </div>
+      <a className="scroll-cue" href="#about" aria-label="Scroll to about">
+        <span aria-hidden="true" />
+      </a>
     </section>
   );
 }

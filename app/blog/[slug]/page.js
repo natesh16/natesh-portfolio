@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPost, getPosts, formatDate } from '../../../lib/blog';
 import { renderMarkdown } from '../../../lib/markdown';
+import Comments from '../../../components/Comments';
 
 export const dynamicParams = false;
 
@@ -48,6 +49,7 @@ export default async function PostPage({ params }) {
           ) : null}
         </header>
         <div className="prose">{renderMarkdown(post.body)}</div>
+        <Comments slug={post.slug} />
         <nav className="post-nav" aria-label="More posts">
           {newer ? <Link href={`/blog/${newer.slug}`}><span className="mono">Newer</span>{newer.title}</Link> : <span />}
           {older ? <Link href={`/blog/${older.slug}`}><span className="mono">Older</span>{older.title}</Link> : <span />}

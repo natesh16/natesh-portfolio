@@ -1,9 +1,21 @@
 import BlogList from '../../components/BlogList';
 import { getPosts, formatDate } from '../../lib/blog';
 
+const description = 'Writing on full-stack development, AWS and CI/CD automation by Natesh L.';
+
 export const metadata = {
-  title: 'Blog | Natesh L',
-  description: 'Writing on full-stack development, AWS and CI/CD automation by Natesh L.',
+  title: 'Blog',
+  description,
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    type: 'website',
+    url: '/blog',
+    title: 'Blog',
+    description,
+    siteName: 'Natesh L',
+    locale: 'en_US',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Natesh L — Blog' }],
+  },
 };
 
 export default function BlogIndex() {

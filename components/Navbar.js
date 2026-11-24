@@ -24,7 +24,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header>
+    <header className="site-header">
       <Link className="logo" href="/">{profile.name}</Link>
       <button
         className="menu-btn"

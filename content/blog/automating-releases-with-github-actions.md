@@ -3,6 +3,7 @@ title: Automating releases with GitHub Actions
 date: 2026-11-10
 summary: Another sample post. It shows lists, code and links in the post layout.
 tags: CI/CD, GitHub Actions
+draft: true
 ---
 
 Automated pipelines turn releases from an event into a routine. This sample sketches the idea.

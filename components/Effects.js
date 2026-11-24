@@ -10,7 +10,7 @@ export default function Effects() {
 
   useEffect(() => {
     const bar = document.getElementById('bar');
-    const header = document.querySelector('header');
+    const header = document.querySelector('header.site-header');
     const measure = () => {
       // Real header height drives scroll offset for anchors and the mobile menu.
       if (header) document.documentElement.style.setProperty('--hdr', `${header.offsetHeight}px`);

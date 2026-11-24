@@ -3,6 +3,7 @@ title: Deploying a MERN app on AWS EC2 with Docker
 date: 2026-11-20
 summary: A sample post showing the layout. Replace it with your own writing.
 tags: AWS, Docker, MERN
+draft: true
 ---
 
 This is a **sample post** so you can see how the blog looks. Delete this file or set `draft: true` in the header once your own posts are in.
