@@ -2506,14 +2506,70 @@ a.card:hover {
   transform: translateX(3px)
 }
 
-.seo-tools h3 {
-  margin-bottom: 12px;
+/* architecture & tooling */
+.stack-grid {
+  margin-top: 4px
 }
-.seo-tools p {
+
+.stack-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  transition: border-color .25s, box-shadow .25s
+}
+
+.stack-card:hover {
+  border-color: var(--emerald);
+  box-shadow: 0 20px 44px -34px rgba(17, 17, 17, .5)
+}
+
+.stack-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px
+}
+
+.stack-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(16, 185, 129, .16);
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--emerald);
+  font-size: 19px
+}
+
+.stack-num {
+  font: 400 12px var(--mono);
+  letter-spacing: .08em;
+  color: var(--mu2)
+}
+
+.stack-card h3 {
+  margin-bottom: 6px
+}
+
+.stack-card p {
+  margin-bottom: 16px;
   color: var(--mu);
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.65
 }
-.seo-tools p + p {
-  margin-top: 12px;
+
+.stack-chips {
+  margin-bottom: 18px
 }
+
+.stack-stat {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font: 500 12px var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--emerald)
+}
+
