@@ -39,7 +39,7 @@ export const metadata = {
   },
 };
 
-export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#fafafa' };
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#0b0d12' };
 
 const jsonLd = {
   '@context': 'https://schema.org',

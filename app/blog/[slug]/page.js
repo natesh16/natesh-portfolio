@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPost, getPosts, formatDate } from '../../../lib/blog';
 import { renderMarkdown } from '../../../lib/markdown';
+import { SITE_NAME, SITE_URL, absoluteUrl, jsonLdString } from '../../../lib/site';
 import Comments from '../../../components/Comments';
 
 export const dynamicParams = false;
@@ -15,9 +16,29 @@ export async function generateMetadata({ params }) {
   const post = getPost(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | Natesh L`,
+    title: post.title,
     description: post.summary,
-    openGraph: { title: post.title, description: post.summary, type: 'article', publishedTime: post.date },
+    keywords: post.tags,
+    alternates: { canonical: `/blog/${post.slug}` },
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    openGraph: {
+      type: 'article',
+      url: `/blog/${post.slug}`,
+      title: post.title,
+      description: post.summary,
+      siteName: SITE_NAME,
+      locale: 'en_US',
+      publishedTime: post.date,
+      modifiedTime: post.updated || post.date,
+      authors: [SITE_URL],
+      tags: post.tags,
+      ...(post.image ? { images: [{ url: post.image, alt: post.title }] } : {}),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.summary,
+    },
   };
 }
 
@@ -30,13 +51,32 @@ export default async function PostPage({ params }) {
   const newer = all[i - 1];
   const older = all[i + 1];
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': absoluteUrl(`/blog/${post.slug}`) },
+    headline: post.title,
+    description: post.summary,
+    datePublished: post.date,
+    dateModified: post.updated || post.date,
+    author: { '@type': 'Person', name: SITE_NAME, url: SITE_URL },
+    publisher: { '@type': 'Person', name: SITE_NAME, url: SITE_URL },
+    keywords: post.tags.join(', '),
+    inLanguage: 'en',
+    ...(post.image ? { image: absoluteUrl(post.image), thumbnailUrl: absoluteUrl(post.image) } : {}),
+  };
+
   return (
     <main className="page" id="main">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd) }}
+      />
       <article className="in narrow">
         <Link href="/blog" className="back">← All posts</Link>
         <header className="post-head">
           <span className="mono">
-            {formatDate(post.date)} · {post.minutes} min read
+            <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.minutes} min read
           </span>
           <h1 className="page-title">{post.title}</h1>
           {post.summary ? <p className="sub">{post.summary}</p> : null}

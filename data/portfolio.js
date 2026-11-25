@@ -264,19 +264,19 @@ export const skillGroups = [
       { id: "iac", label: "Infrastructure as Code" },
     ],
   },
-  {
-    title: "Electrical engineering",
-    description:
-      "Practical production knowledge from industrial electrical control-panel work.",
-    items: [
-      { id: "schematic", label: "Electrical Schematic Reading" },
-      { id: "sld", label: "Single-Line Diagrams (SLD)" },
-      { id: "controlpanel", label: "LT & Control Panels" },
-      { id: "mcc", label: "Motor Control Centres (MCC)" },
-      { id: "plc", label: "PLC-Ready Panels" },
-      { id: "wiring", label: "Wiring, Ferruling & Testing" },
-    ],
-  },
+  // {
+  //   title: "Electrical engineering",
+  //   description:
+  //     "Practical production knowledge from industrial electrical control-panel work.",
+  //   items: [
+  //     { id: "schematic", label: "Electrical Schematic Reading" },
+  //     { id: "sld", label: "Single-Line Diagrams (SLD)" },
+  //     { id: "controlpanel", label: "LT & Control Panels" },
+  //     { id: "mcc", label: "Motor Control Centres (MCC)" },
+  //     { id: "plc", label: "PLC-Ready Panels" },
+  //     { id: "wiring", label: "Wiring, Ferruling & Testing" },
+  //   ],
+  // },
   {
     title: "Ways of working",
     description:

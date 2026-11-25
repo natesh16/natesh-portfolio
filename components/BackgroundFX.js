@@ -89,7 +89,7 @@ export default function BackgroundFX() {
           const b = dots[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < link) {
-            ctx.strokeStyle = `rgba(17,17,17,${(1 - dist / link) * 0.085})`;
+            ctx.strokeStyle = `rgba(16,185,129,${(1 - dist / link) * 0.11})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -101,7 +101,7 @@ export default function BackgroundFX() {
       for (const d of dots) {
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(17,17,17,${d.a})`;
+        ctx.fillStyle = `rgba(16,185,129,${d.a * 0.85})`;
         ctx.fill();
       }
     };

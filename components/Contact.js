@@ -20,10 +20,12 @@ const socials = [
 
 export default function Contact() {
   const [errors, setErrors] = useState({});
-  const [feedback, setFeedback] = useState(null);
+  const [status, setStatus] = useState('idle');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    if (status === 'sending') return;
+
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
     const next = {};
@@ -32,16 +34,23 @@ export default function Contact() {
     });
     setErrors(next);
     if (Object.keys(next).length) {
-      setFeedback(null);
+      setStatus('idle');
       return;
     }
-    // No backend: open the visitor's email app with the message ready to send.
-    const body = `${data.message}\n\n${data.name} (${data.email})`;
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-      data.subject
-    )}&body=${encodeURIComponent(body)}`;
-    setFeedback('s');
-    form.reset();
+
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('send_failed');
+      setStatus('success');
+      form.reset();
+    } catch {
+      setStatus('error');
+    }
   };
 
   const field = (id, label, error, control) => (
@@ -61,19 +70,19 @@ export default function Contact() {
           <div className="cl">
             <a href={`mailto:${profile.email}`}>
               <FaEnvelope aria-hidden="true" />
-              {profile.email}
+              <span>{profile.email}</span>
             </a>
             <a href={profile.phoneHref}>
               <FaPhoneAlt aria-hidden="true" />
-              {profile.phone}
+              <span>{profile.phone}</span>
             </a>
             <a className="ext" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
               <FaLinkedinIn aria-hidden="true" />
-              linkedin.com/in/natesh-l
+              <span>linkedin.com/in/natesh-l</span>
             </a>
             <a className="ext" href={profile.github} target="_blank" rel="noopener noreferrer">
               <FaGithub aria-hidden="true" />
-              github.com/natesh16
+              <span>github.com/natesh16</span>
             </a>
           </div>
           <div className="soc">
@@ -82,7 +91,6 @@ export default function Contact() {
                 key={label}
                 href={href}
                 aria-label={label}
-               
                 {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
                 <Icon aria-hidden="true" />
@@ -92,6 +100,10 @@ export default function Contact() {
         </div>
 
         <form className="card" noValidate onSubmit={onSubmit}>
+          <div className="hp" aria-hidden="true">
+            <label htmlFor="cf-company">Company</label>
+            <input id="cf-company" name="company" tabIndex={-1} autoComplete="off" />
+          </div>
           {field(
             'name',
             'Name',
@@ -135,16 +147,21 @@ export default function Contact() {
               required
             />
           )}
-          <button className="btn p" type="submit" >
+          <button className="btn p" type="submit" disabled={status === 'sending'}>
             <FaEnvelope aria-hidden="true" />
-            Send message
+            {status === 'sending' ? 'Sending…' : 'Send message'}
           </button>
-          <div id="fb" className={feedback ?? undefined} role="status" aria-live="polite">
-            {feedback === 's' ? (
-              <>
-                Your email app should open with the message ready to send. If it doesn&rsquo;t,
-                write to <a href={`mailto:${profile.email}`}>{profile.email}</a>.
-              </>
+          <div id="fb" role="status" aria-live="polite">
+            {status === 'success' ? (
+              <p className="fb-ok">
+                Thanks &mdash; your message has been sent. I&rsquo;ll reply soon.
+              </p>
+            ) : null}
+            {status === 'error' ? (
+              <p className="fb-err">
+                Sorry, the message could not be sent. Please email{' '}
+                <a href={`mailto:${profile.email}`}>{profile.email}</a> directly.
+              </p>
             ) : null}
           </div>
         </form>
