@@ -2505,3 +2505,15 @@ a.card:hover {
 .post-card:hover .read {
   transform: translateX(3px)
 }
+
+.seo-tools h3 {
+  margin-bottom: 12px;
+}
+.seo-tools p {
+  color: var(--mu);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.seo-tools p + p {
+  margin-top: 12px;
+}

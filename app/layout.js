@@ -1,4 +1,5 @@
 import { Inter, DM_Mono } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { profile } from '../data/portfolio';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL, absoluteUrl, jsonLdString } from '../lib/site';
@@ -15,24 +16,62 @@ const description = SITE_DESCRIPTION;
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: SITE_TITLE, template: '%s | Natesh L' },
+  title: { default: SITE_TITLE, template: '%s | Natesh' },
   description,
+  keywords: [
+    'Natesh',
+    'Natesh L',
+    'Full Stack Developer & DevOps Engineer',
+    'Full Stack Developer',
+    'DevOps Engineer',
+    'MERN applications on AWS',
+    'CI/CD pipelines',
+    'Jenkins',
+    'Docker',
+    'GitHub Actions',
+    'AWS Cloud',
+    'MERN Stack',
+  ],
+  authors: [{ name: 'Natesh', url: SITE_URL }],
+  creator: 'Natesh',
   alternates: {
     canonical: '/',
     types: { 'application/rss+xml': '/feed.xml' },
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: SITE_TITLE,
-    description: 'Scalable MERN applications, AWS cloud and CI/CD automation.',
+    description,
     type: 'profile',
-    url: '/',
-    siteName: 'Natesh L',
+    firstName: 'Natesh',
+    lastName: 'L',
+    username: 'natesh16',
+    url: SITE_URL,
+    siteName: 'Natesh — Full Stack Developer & DevOps Engineer',
     locale: 'en_US',
+    images: [
+      {
+        url: '/profile.png',
+        width: 1106,
+        height: 1422,
+        alt: 'Natesh — Full Stack Developer & DevOps Engineer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_TITLE,
-    description: 'Scalable MERN applications, AWS cloud and CI/CD automation.',
+    description,
+    images: ['/profile.png'],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || '',
@@ -98,6 +137,15 @@ export default function RootLayout({ children }) {
         <Footer />
         <Effects />
         <SoundFX />
+        <Script
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-MPV93GTS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`}
+        </Script>
       </body>
     </html>
   );
