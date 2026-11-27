@@ -9,7 +9,9 @@ export default function Footer() {
       </span>
       <span className="fl-links">
         <Link href="/blog">Blog</Link>
-        <a href={profile.resume} download={profile.resumeFileName}>Resume</a>
+        <a href="/#services">Services</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#contact">Start a project</a>
       </span>
     </footer>
   );

@@ -2573,3 +2573,73 @@ a.card:hover {
   color: var(--emerald)
 }
 
+
+/* ==========================================================================
+   Service-based landing sections
+   Tailwind utilities are emitted here, after the legacy design system, so
+   they win on specificity without resetting any existing component.
+   Preflight is disabled in tailwind.config.js.
+   ========================================================================== */
+@tailwind base;
+@tailwind utilities;
+
+/* Tailwind's preflight is disabled, so restore the border defaults its
+   utilities expect. Legacy rules set their own borders and outrank this. */
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb
+}
+
+#home .hero-title {
+  font-size: clamp(2.5rem, 5.6vw, 4.3rem);
+  line-height: 1.04;
+  letter-spacing: -0.045em
+}
+
+.hero-mesh {
+  background:
+    radial-gradient(58% 55% at 78% 16%, rgba(16, 185, 129, .16), transparent 70%),
+    radial-gradient(46% 46% at 10% 90%, rgba(52, 211, 153, .10), transparent 72%)
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, .045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, .045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 82% 72% at 50% 40%, #000 18%, transparent 78%);
+  mask-image: radial-gradient(ellipse 82% 72% at 50% 40%, #000 18%, transparent 78%);
+  opacity: .7
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #34d399 0%, #6ee7b7 46%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent
+}
+
+.hero-float {
+  animation: hero-float 7s ease-in-out infinite
+}
+
+@keyframes hero-float {
+
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(-8px)
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-grid {
+    background-size: 54px 54px
+  }
+}

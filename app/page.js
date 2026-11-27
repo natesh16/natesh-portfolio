@@ -1,13 +1,7 @@
 import Hero from '../components/Hero';
-import About from '../components/About';
-import Experience from '../components/Experience';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import ToolStackOverview from '../components/ToolStackOverview';
-import Education from '../components/Education';
-import Training from '../components/Training';
-import Writing from '../components/Writing';
-import Profiles from '../components/Profiles';
+import Services from '../components/Services';
+import Pricing from '../components/Pricing';
+import ClientDetails from '../components/ClientDetails';
 import Contact from '../components/Contact';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/site';
 
@@ -16,21 +10,18 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {
+    type: 'website',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    type: 'profile',
-    firstName: 'Natesh',
-    lastName: 'L',
-    username: 'natesh16',
     url: SITE_URL,
-    siteName: 'Natesh — Full Stack Developer & DevOps Engineer',
+    siteName: 'Natesh — Full-Stack Development & SEO',
     locale: 'en_US',
     images: [
       {
         url: '/profile.png',
         width: 1106,
         height: 1422,
-        alt: 'Natesh — Full Stack Developer & DevOps Engineer',
+        alt: 'Natesh — Full-Stack Web Developer & SEO Consultant',
       },
     ],
   },
@@ -46,15 +37,9 @@ export default function Home() {
   return (
     <main id="main">
       <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <ToolStackOverview />
-      <Education />
-      <Training />
-      <Writing />
-      <Profiles />
+      <Services />
+      <Pricing />
+      <ClientDetails />
       <Contact />
     </main>
   );

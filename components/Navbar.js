@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaDownload } from 'react-icons/fa';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { profile, navLinks } from '../data/portfolio';
 
 export default function Navbar() {
@@ -40,8 +40,8 @@ export default function Navbar() {
           <a key={l.href} href={home ? l.href : `/${l.href}`}>{l.label}</a>
         ))}
         <Link href="/blog" aria-current={inBlog ? 'page' : undefined} className={inBlog ? 'on' : undefined}>Blog</Link>
-        <a className="dl-nav" href={profile.resume} download={profile.resumeFileName}>
-          <FaDownload aria-hidden="true" /> Resume
+        <a className="dl-nav" href={home ? '#contact' : '/#contact'}>
+          <FiArrowUpRight aria-hidden="true" /> Start a project
         </a>
       </nav>
     </header>
