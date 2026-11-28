@@ -1,5 +1,6 @@
 import { Inter, DM_Mono } from 'next/font/google';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { profile } from '../data/portfolio';
 import { pricing, services } from '../data/consulting';
@@ -210,6 +211,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <Effects />
         <SoundFX />
+        <Analytics />
         <Script
           src="https://www.googletagmanager.com/gtm.js?id=GTM-MPV93GTS"
           strategy="afterInteractive"
